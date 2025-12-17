@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "mcp-boost configuration",
+  "description": "Configuration file for mcp-boost MCP server",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema reference"
+    },
+    "tools": {
+      "type": "object",
+      "description": "Tool configurations",
+      "properties": {
+        "browser-logs": {
+          "$ref": "#/definitions/toolConfig",
+          "description": "Browser console logs capture tool"
+        },
+        "server-logs": {
+          "$ref": "#/definitions/toolConfig",
+          "description": "Server-side logs capture tool"
+        }
+      },
+      "additionalProperties": {
+        "$ref": "#/definitions/toolConfig"
+      }
+    }
+  },
+  "required": ["tools"],
+  "definitions": {
+    "toolConfig": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Whether this tool is enabled"
+        }
+      },
+      "required": ["enabled"],
+      "additionalProperties": true
+    }
+  }
+}
